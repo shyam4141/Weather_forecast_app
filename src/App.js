@@ -37,11 +37,26 @@ function App() {
 
   function showData() {
     let finalData = [];
+    let dateValues = [];
+    let updatedArrayOfObjects = [];
     finalData = data?.map((item) => {
       return item.main;
     });
-    console.log("finalData", finalData);
-    setWeatherData(finalData);
+
+    dateValues = data?.map((item) => {
+      formatDate(item.dt_txt);
+    });
+
+    function formatDate(dateString) {
+      const date = new Date(dateString);
+      const day = date.getDate().toString().padStart(2, "0");
+      const month = (date.getMonth() + 1).toString().padStart(2, "0");
+      const year = date.getFullYear();
+      updatedArrayOfObjects = finalData?.map((obj, index) => {
+        return { ...obj, date: `${day}/${month}/${year}` };
+      });
+    }
+    setWeatherData(updatedArrayOfObjects);
   }
 
   function handleChange(event) {

@@ -8,7 +8,7 @@ const DataTable = ({ data }) => {
           <div className="col-12 col-md mt-4 data_units">
             <div className="row">
               <div className="col-12 data_units date_header">
-                Date : xx\xx\xxxx
+                Date :{item.date}
               </div>
               <div className="col-12 data_units temp_data"> Temperature</div>
 
